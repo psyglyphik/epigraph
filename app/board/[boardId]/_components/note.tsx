@@ -39,7 +39,7 @@ export const Note = ({
   const { x, y, width, height, fill, value } = layer;
 
   const updateValue = useMutation((
-    { storage },
+    { storage }: any,
     newValue: string,
   ) => {
     const liveLayers = storage.get("layers");
