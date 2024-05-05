@@ -1,4 +1,3 @@
-// @ts-nocheck 
 "use client";
 
 import { nanoid } from "nanoid";
@@ -74,7 +73,7 @@ export const Canvas = ({
   const canRedo = useCanRedo();
 
   const insertLayer = useMutation((
-    { storage, setMyPresence },
+    { storage, setMyPresence }: any,
     layerType: LayerType.Ellipse | LayerType.Rectangle | LayerType.Text | LayerType.Note,
     position: Point,
   ) => {
@@ -102,7 +101,7 @@ export const Canvas = ({
   }, [lastUsedColor]);
 
   const translateSelectedLayers = useMutation((
-    { storage, self },
+    { storage, self }: any,
     point: Point,
   ) => {
     if (canvasState.mode !== CanvasMode.Translating) {
@@ -134,7 +133,7 @@ export const Canvas = ({
   ]);
 
   const unselectLayers = useMutation((
-    { self, setMyPresence }
+    { self, setMyPresence }: any
   ) => {
     if (self.presence.selection.length > 0) {
       setMyPresence({ selection: [] }, { addToHistory: true });
@@ -142,7 +141,7 @@ export const Canvas = ({
   }, []);
 
   const updateSelectionNet = useMutation((
-    { storage, setMyPresence },
+    { storage, setMyPresence }: any,
     current: Point,
     origin: Point,
   ) => {
@@ -179,7 +178,7 @@ export const Canvas = ({
   }, []);
 
   const continueDrawing = useMutation((
-    { self, setMyPresence },
+    { self, setMyPresence }: any,
     point: Point,
     e: React.PointerEvent,
   ) => {
@@ -205,7 +204,7 @@ export const Canvas = ({
   }, [canvasState.mode]);
 
   const insertPath = useMutation((
-    { storage, self, setMyPresence }
+    { storage, self, setMyPresence }: any
   ) => {
     const liveLayers = storage.get("layers");
     const { pencilDraft } = self.presence;
@@ -247,7 +246,7 @@ export const Canvas = ({
   }, [lastUsedColor]);
 
   const resizeSelectedLayer = useMutation((
-    { storage, self },
+    { storage, self }: any,
     point: Point,
   ) => {
     if (canvasState.mode !== CanvasMode.Resizing) {
@@ -376,10 +375,10 @@ export const Canvas = ({
     insertPath
   ]);
 
-  const selections = useOthersMapped((other) => other.presence.selection);
+  const selections = useOthersMapped((other: any) => other.presence.selection);
 
   const onLayerPointerDown = useMutation((
-    { self, setMyPresence },
+    { self, setMyPresence }: any,
     e: React.PointerEvent,
     layerId: string,
   ) => {
@@ -480,7 +479,7 @@ export const Canvas = ({
             transform: `translate(${camera.x}px, ${camera.y}px)`
           }}
         >
-          {layerIds.map((layerId) => (
+          {layerIds.map((layerId: any) => (
             <LayerPreview
               key={layerId}
               id={layerId}
