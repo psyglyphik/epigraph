@@ -10,13 +10,13 @@ import {
 
 export const EmptyOrg = () => {
   return (
-    <div className="h-full flex flex-col items-center justify-center">
-      <Image
+    <div className="h-full flex flex-col items-center p-48">
+      {/* <Image
         src="/elements.svg"
         alt="Empty"
         height={200}
         width={200}
-      />
+      /> */}
       <h2 className="text-2xl font-semibold mt-6">
         Welcome to Epigraph
       </h2>
